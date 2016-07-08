@@ -1,4 +1,3 @@
-console.log('hi');
 
 var username = '';
 var compname = 'Evil Dude';

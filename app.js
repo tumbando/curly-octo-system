@@ -1,3 +1,42 @@
+$(document).ready(function(evt){
+  $('#field').on('click', function(){
+    $('.settingMenu img').addClass('hidden');
+    $('#setting1').removeClass('hidden');
+  });
+  $('#castle').on('click', function(){
+    $('.settingMenu img').addClass('hidden');
+    $('#setting2').removeClass('hidden');
+  });
+  $('#volcano').on('click', function(){
+    $('.settingMenu img').addClass('hidden');
+    $('#setting3').removeClass('hidden');
+  });
+  $('#wizard').on('click', function(){
+    $('.charMenu img').addClass('hidden');
+    $('#char1').removeClass('hidden');
+  });
+  $('#knight').on('click', function(){
+    $('.charMenu img').addClass('hidden');
+    $('#char2').removeClass('hidden');
+  });
+  $('#ranger').on('click', function(){
+    $('.charMenu img').addClass('hidden');
+    $('#char3').removeClass('hidden');
+  });
+  $('#troll').on('click', function(){
+    $('.oppMenu img').addClass('hidden');
+    $('#opp1').removeClass('hidden');
+  });
+  $('#dragon').on('click', function(){
+    $('.oppMenu img').addClass('hidden');
+    $('#opp2').removeClass('hidden');
+  });
+  $('#unicorn').on('click', function(){
+    $('.oppMenu img').addClass('hidden');
+    $('#opp3').removeClass('hidden');
+  });
+  });
+
 console.log('hi');
 
 var username = '';

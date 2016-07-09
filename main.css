@@ -36,7 +36,9 @@ form input {
   width: 10rem; }
 
 .charContainer {
-  width: 24rem; }
+  width: 24rem;
+  margin-right: -7rem;
+  margin-left: 4rem; }
 
 .charMenu {
   width: 20rem; }
@@ -45,18 +47,20 @@ form input {
   height: 10rem;
   width: 10rem;
   position: absolute;
-  left: 14rem;
-  top: 17rem; }
+  left: 17rem;
+  top: 17rem;
+  object-fit: contain; }
 
 .charMenu input {
   display: inline; }
 
 .settingMenu img {
   height: 10rem;
-  width: 10rem;
+  width: 20rem;
   position: absolute;
-  right: 40rem;
-  top: 17rem; }
+  right: 34.5rem;
+  top: 17rem;
+  object-fit: contain; }
 
 .oppContainer {
   width: 24rem;
@@ -70,11 +74,13 @@ form input {
   height: 10rem;
   width: 10rem;
   position: absolute;
-  right: 18rem;
-  top: 17rem; }
+  right: 16rem;
+  top: 17rem;
+  object-fit: contain; }
 
 .settingContainer {
-  width: 24rem; }
+  width: 24rem;
+  margin-left: 5rem; }
 
 .settingMenu {
   width: 23rem; }
@@ -84,7 +90,7 @@ form input {
 
 button {
   margin: 5rem;
-  margin-top: 25rem;
+  margin-top: 20rem;
   height: 5rem;
   width: 20rem;
   font-size: 2rem; }

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">
-    <title>Battle Royale 20xx</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="main.css" media="screen" />
+    <title>Battle Royale 20XX</title>
+</head>
+
+<body>
     <header>
       BATTLE ROYALE 20XX
     </header>
@@ -20,40 +22,114 @@
         <button type="submit" name="button">Submit</button>
       </form>
     </section>
+    <div class="introScreen">
 
-    <section class="battle-page">
-      <img class="playerSprite"/>
-      <img class="enemySprite"/>
-      <div class="commands">
-        <div class="option-list">
-          <ul>
-            <li class="option">Attack</li>
-            <li class="option">Spell</li>
-            <li class="option">Taunt</li>
-          </ul>
-          <p class="hidden">player attacked enemy for X damage</p>
-        </div>
-        <div class="stats playerStat">
-          <p>player</p>
-          <div class="healthBar">
-            <div class="health">
-            </div>
-          </div>
-        </div>
-        <div class="stats enemyStat">
-          <p>enemy</p>
-          <div class="healthBar">
-            <div class="health">
-            </div>
-          </div>
-        </div>
+      <input id="enterName" type="text" name="name" value="" placeholder="Enter your name">
+      <div class="charContainer container">
+
+          <form class="charMenu">
+              <p>
+                  Choose your character!
+              </p>
+              <img src="images/question.gif" alt="" />
+              <img id="char1" class="hidden" src="images/wizard.jpg" alt="" />
+              <img id="char2" class="hidden" src="images/knight.jpg" alt="" />
+              <img id="char3" class="hidden" src="images/ranger.jpg" alt="" />
+              <input id="wizard" type="radio" name="characterClass" value="Wizard">
+              <p>Wizard</p>
+              <input id="knight" type="radio" name="characterClass" value="Knight">
+              <p>Knight</p>
+              <input id="ranger" type="radio" name="characterClass" value="Ranger">
+              <p>Ranger</p>
+
+          </form>
       </div>
-    </section>
+
+      <div class="settingContainer container">
+        <form class="settingMenu">
+            <p>
+                Choose your battleground!
+            </p>
+            <img src="images/question.gif" alt="" />
+
+            <img id="setting1" class="hidden" src="images/field.gif" alt="" />
+            <img id="setting2" class="hidden" src="images/castle.gif" alt="" />
+            <img id="setting3" class="hidden" src="images/volcano.gif" alt="" />
+            <input id="field" type="radio" name="characterClass" value="field">
+            <p>Field</p>
+            <input id="castle" type="radio" name="characterClass" value="castle">
+            <p>Castle</p>
+            <input id="volcano" type="radio" name="characterClass" value="field">
+            <p>Volcano</p>
+
+        </form>
+    </div>
+    <div class="oppContainer container">
+
+
+        <form class="oppMenu">
+            <p>
+                Choose your opponent!
+            </p>
+            <img src="images/question.gif" alt="" />
+
+            <img id="opp1" class="hidden" src="images/troll.jpg" alt="" />
+            <img id="opp2" class="hidden" src="images/dragon.jpg" alt="" />
+            <img id="opp3" class="hidden" src="images/unicorn.jpg" alt="" />
+            <input id="troll" type="radio" name="characterClass" value="field">
+            <p>Troll</p>
+            <input id="dragon" type="radio" name="characterClass" value="castle">
+            <p>Dragon</p>
+            <input id="unicorn" type="radio" name="characterClass" value="field">
+            <p>Unicorn</p>
+
+        </form>
+    </div>
+    <button type="submit" name="button">Let the battle begin!</button>
+
+
+</div>
+
+
+      <section class="battle-page hidden">
+        <img class="playerSprite"/>
+        <img class="enemySprite"/>
+        <div class="commands">
+          <div class="option-list">
+            <ul>
+              <li class="option">Attack</li>
+              <li class="option">Spell</li>
+              <li class="option">Taunt</li>
+            </ul>
+            <p class="hidden">player attacked enemy for X damage</p>
+          </div>
+          <div class="stats playerStat">
+            <p>player</p>
+            <div class="healthBar">
+              <div class="health">
+              </div>
+            </div>
+          </div>
+          <div class="stats enemyStat">
+            <p>enemy</p>
+            <div class="healthBar">
+              <div class="health">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     <section class="result-page hidden">
+      <!-- div containing winner and button to play again -->
     </section>
 
 
-    <script src="http://code.jquery.com/jquery-2.0.0.min.js" type="text/javascript"></script>
-    <script src="app.js" type="text/javascript"></script>
-  </body>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="app.js" type="text/javascript">
+    </script>
+</body>
+
 </html>

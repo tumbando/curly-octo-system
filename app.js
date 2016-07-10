@@ -1,3 +1,42 @@
+$(document).ready(function(evt){
+  $('#field').on('click', function(){
+    $('.settingMenu img').addClass('hidden');
+    $('#setting1').removeClass('hidden');
+  });
+  $('#castle').on('click', function(){
+    $('.settingMenu img').addClass('hidden');
+    $('#setting2').removeClass('hidden');
+  });
+  $('#volcano').on('click', function(){
+    $('.settingMenu img').addClass('hidden');
+    $('#setting3').removeClass('hidden');
+  });
+  $('#wizard').on('click', function(){
+    $('.charMenu img').addClass('hidden');
+    $('#char1').removeClass('hidden');
+  });
+  $('#knight').on('click', function(){
+    $('.charMenu img').addClass('hidden');
+    $('#char2').removeClass('hidden');
+  });
+  $('#ranger').on('click', function(){
+    $('.charMenu img').addClass('hidden');
+    $('#char3').removeClass('hidden');
+  });
+  $('#troll').on('click', function(){
+    $('.oppMenu img').addClass('hidden');
+    $('#opp1').removeClass('hidden');
+  });
+  $('#dragon').on('click', function(){
+    $('.oppMenu img').addClass('hidden');
+    $('#opp2').removeClass('hidden');
+  });
+  $('#unicorn').on('click', function(){
+    $('.oppMenu img').addClass('hidden');
+    $('#opp3').removeClass('hidden');
+  });
+  });
+
 //GAME LOGIC STUFF:
 //NEED: Add input functions that will gather arguments to build var player (username, characterType)
 //NEED: Add click event handlers that call functions, see below for details
@@ -28,18 +67,18 @@ function playTurn(option){
   $optionMenu.addClass("hidden");
   if (option.textContent === "Attack"){
     $message.text(player.attack(enemy));
-    console.log(enemy.hp);
   } else if (option.textContent === "Spell") {
     $message.text(player.spell(enemy));
   } else {
     $message.text(player.taunt(enemy));
   }
-  // few second animation (maybe target flashes red)
-
+  // will add a few second animation (maybe target flashes red)
+  gameEnd(enemy.hp);
   $message.text(enemy.enemyAI(player));
 
-  // few second animation
-  
+  // will add a few second animation
+  gameEnd(player.hp);
+
   $optionMenu.removeClass("hidden");
 }
 

@@ -7,14 +7,47 @@ var tauntList = ['You will never defeat me, ','I will destroy you, ','You are to
 // var player = new Character (username, characterType);
 
 // DOM elements
+$optionMenu = $(".option-list ul");
 $playerSprite = $(".playerSprite");
+$playerNameTag = $(".playerStat p");
+$playerHealth = $(".playerStat .healthBar .health");
+
 $enemySprite = $(".enemySprite");
+$enemyNameTag = $(".enemyStat p");
+$enemyHealth = $(".enemyStat .healthBar .health");
+
+$message = $(".option-list p");
+$options = $(".option");
+
+// listener for attack/spell/taunt
+$options.on("click", function(evt){
+  playTurn(evt.target);
+});
+
+function playTurn(option){
+  $optionMenu.addClass("hidden");
+  if (option.textContent === "Attack"){
+    $message.text(player.attack(enemy));
+    console.log(enemy.hp);
+  } else if (option.textContent === "Spell") {
+    $message.text(player.spell(enemy));
+  } else {
+    $message.text(player.taunt(enemy));
+  }
+  // few second animation (maybe target flashes red)
+
+  $message.text(enemy.enemyAI(player));
+
+  // few second animation
+  
+  $optionMenu.removeClass("hidden");
+}
 
 // enemy name/type is generated every time
-var enemy = new Character (enemyNameGenerator(), enemyTypeGenerator(), $enemySprite);
+var enemy = new Character (enemyNameGenerator(), enemyTypeGenerator(), $enemySprite, $enemyNameTag, $enemyHealth);
 
 // for testing
-var player = new Character ("Test Name", "wizard", $playerSprite);
+var player = new Character ("Test Name", "knight", $playerSprite, $playerNameTag, $playerHealth);
 
 function enemyNameGenerator () {
     var randInt = Math.floor(Math.random()*10);
@@ -26,7 +59,7 @@ function enemyTypeGenerator () {
     else if (randInt<=7){return 'dragon';}
     else if (randInt>=8){return 'unicorn';}
 }
-function Character (name, characterType, spriteElement) {
+function Character (name, characterType, spriteElement, nameTag, healthBar) {
 
     this.username = name + ' the ' + characterType;
     this.characterType = characterType;
@@ -34,6 +67,7 @@ function Character (name, characterType, spriteElement) {
     if (this.characterType === 'wizard') {
       this.atkPwr = 10;
       this.magicPwr = 12;
+      this.maxHP = 500;
       this.hp = 500;
       this.armor = 0;
       this.critChance = 0;
@@ -42,6 +76,7 @@ function Character (name, characterType, spriteElement) {
     } else if (this.characterType === 'knight') {
       this.atkPwr = 70;
       this.magicPwr = 2;
+      this.maxHP = 700;
       this.hp = 700;
       this.armor = 40;
       this.critChance = 5;
@@ -51,6 +86,7 @@ function Character (name, characterType, spriteElement) {
     else if (this.characterType === 'ranger') {
       this.atkPwr = 50;
       this.magicPwr = 6;
+      this.maxHP = 600;
       this.hp = 600;
       this.armor = 20;
       this.critChance = 10;
@@ -60,6 +96,7 @@ function Character (name, characterType, spriteElement) {
     else if (this.characterType === 'troll') {
       this.atkPwr = 70;
       this.magicPwr = 1;
+      this.maxHP = 1500;
       this.hp = 1500;
       this.armor = 0;
       this.critChance = 5;
@@ -69,6 +106,7 @@ function Character (name, characterType, spriteElement) {
     else if (this.characterType === 'dragon') {
       this.atkPwr = 50;
       this.magicPwr = 8;
+      this.maxHP = 1000;
       this.hp = 1000;
       this.armor = 40;
       this.critChance = 5;
@@ -78,13 +116,19 @@ function Character (name, characterType, spriteElement) {
     else if (this.characterType === 'unicorn') {
       this.atkPwr = 0;
       this.magicPwr = 24;
+      this.maxHP = 800;
       this.hp = 800;
       this.armor = 0;
       this.critChance = 0;
       this.evasion = 50;
       this.sprite = "images/unicorn.gif";
     }
-    spriteElement.attr("src", this.sprite);
+    this.spriteElement = spriteElement;
+    this.spriteElement.attr("src", this.sprite);
+    this.nameTag = nameTag;
+    this.nameTag.text(this.username);
+    this.healthBar = healthBar;
+    this.healthBar.css("width", Math.ceil(this.hp / this.maxHP * 200));
 }
 //This function will have to do more, change the screen or something like that.
 function gameEnd (currentHp) {
@@ -106,11 +150,13 @@ Character.prototype.attack = function (target) {
   } else if (crit <= this.critChance) {
       damage = (this.atkPwr*3 + 50 - target.armor);
       target.hp -= damage;
+      target.healthBar.css("width", Math.ceil(target.hp / target.maxHP * 200));
       return (this.username + ' struck a critical hit for ' + damage + ' damage!');
   } else {
       damage = (this.atkPwr + Math.floor(Math.random()*50)-target.armor);
       if (damage <=0) {damage = 0;}
       target.hp -= damage;
+      target.healthBar.css("width", Math.ceil(target.hp / target.maxHP * 200));
       return (this.username + ' attacked for ' + damage + ' damage!');
   }
 };
@@ -123,6 +169,7 @@ Character.prototype.spell = function (target) {
     } else {
           damage = this.magicPwr * Math.ceil(Math.random()*12);
           target.hp -= damage;
+          target.healthBar.css("width", Math.ceil(target.hp / target.maxHP * 200));
           return (this.username + ' cast a spell for ' + damage + ' damage!');
     }
 };

@@ -8,21 +8,48 @@ body {
   position: relative;
   background: gray;
 }
-
+.hidden {
+  display: none;
+}
+.playerSprite {
+  position: absolute;
+  left: 50px;
+  bottom: 160px;
+}
+.enemySprite {
+  position: absolute;
+  right: 10px;
+  bottom: 160px;
+}
 .stats {
-
+  text-align: center;
+  width: 248px;
+  height: 150px;
+  p {
+    font-size: 20px;
+  }
 }
 .playerStat {
   float: left;
-  width: 248px;
-  height: 150px;
   border-right: 2px solid #ddd;
 }
 .enemyStat {
   float: right;
-  width: 248px;
-  height: 150px;
   border-left: 2px solid #ddd;
+}
+.healthBar {
+  position: relative;
+  text-align: left;
+  border: 1px solid black;
+  background: white;
+  width: 200px;
+  height: 30px;
+  .health {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: red;
+  }
 }
 .commands {
   position: absolute;
@@ -35,12 +62,17 @@ body {
     display: inline-block;
     ul {
       list-style-type: none;
-          margin: 15px;
+      margin: 15px;
+      margin-bottom: 0px;
     }
   }
 }
 .option {
   font-size: 35px;
+  border: 2px solid transparent;
+  &:hover {
+    border: 2px solid white;
+  }
 }
 .option-list {
   font-size: 35px;

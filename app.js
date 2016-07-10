@@ -1,39 +1,39 @@
 $(document).ready(function(evt){
-  $('#field').on('click', function(){
-    $('.settingMenu img').addClass('hidden');
-    $('#setting1').removeClass('hidden');
-  });
-  $('#castle').on('click', function(){
-    $('.settingMenu img').addClass('hidden');
-    $('#setting2').removeClass('hidden');
-  });
-  $('#volcano').on('click', function(){
-    $('.settingMenu img').addClass('hidden');
-    $('#setting3').removeClass('hidden');
-  });
   $('#wizard').on('click', function(){
-    $('.charMenu img').addClass('hidden');
-    $('#char1').removeClass('hidden');
+    $('.charMenu img').slideUp();
+    $('#char1').slideDown();
   });
   $('#knight').on('click', function(){
-    $('.charMenu img').addClass('hidden');
-    $('#char2').removeClass('hidden');
+    $('.charMenu img').slideUp();
+    $('#char2').slideDown();
   });
   $('#ranger').on('click', function(){
-    $('.charMenu img').addClass('hidden');
-    $('#char3').removeClass('hidden');
+    $('.charMenu img').slideUp();
+    $('#char3').slideDown('hidden');
+  });
+  $('#waterfall').on('click', function(){
+    $('.settingMenu img').slideUp();
+    $('#setting1').slideDown();
+  });
+  $('#castle').on('click', function(){
+    $('.settingMenu img').slideUp();
+    $('#setting2').slideDown();
+  });
+  $('#volcano').on('click', function(){
+    $('.settingMenu img').slideUp();
+    $('#setting3').slideDown();
   });
   $('#troll').on('click', function(){
-    $('.oppMenu img').addClass('hidden');
-    $('#opp1').removeClass('hidden');
+    $('.oppMenu img').slideUp();
+    $('#opp1').slideDown();
   });
   $('#dragon').on('click', function(){
-    $('.oppMenu img').addClass('hidden');
-    $('#opp2').removeClass('hidden');
+    $('.oppMenu img').slideUp();
+    $('#opp2').slideDown();
   });
   $('#unicorn').on('click', function(){
-    $('.oppMenu img').addClass('hidden');
-    $('#opp3').removeClass('hidden');
+    $('.oppMenu img').slideUp();
+    $('#opp3').slideDown();
   });
   });
 

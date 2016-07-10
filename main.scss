@@ -7,7 +7,10 @@ body {
   width: 1000px;
   height: 550px;
   position: relative;
-  background: gray;
+  background: url("images/castle.gif");
+  background-size: 1000px 400px;
+  margin: 0 auto;
+  border: 5px solid black;
 }
 .hidden {
   display: none;
@@ -82,9 +85,20 @@ body {
     color: white;
     margin: 20px;
     line-height: 150%;
+    font-size: 25px;
   }
 }
-=======
+.result-page {
+  text-align: center;
+  margin: 0 auto;
+  height: 400px;
+  width: 500px;
+  background: gray;
+  button {
+    margin: 10px;
+  }
+}
+
 header {
     text-align: center;
     font-family: Impact;
@@ -208,4 +222,3 @@ p {
 // li p {
 //   display: inline-block;
 // }
->>>>>>> e041cc288f1bbc56b4b914f5af72314e4c18a599

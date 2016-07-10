@@ -58,6 +58,7 @@ $enemyHealth = $(".enemyStat .healthBar .health");
 $message = $(".option-list p");
 $options = $(".option");
 
+
 // listener for attack/spell/taunt
 $options.on("click", function(evt){
   playTurn(evt.target);
@@ -65,6 +66,7 @@ $options.on("click", function(evt){
 
 function playTurn(option){
   $optionMenu.addClass("hidden");
+  $message.removeClass("hidden");
   if (option.textContent === "Attack"){
     $message.text(player.attack(enemy));
   } else if (option.textContent === "Spell") {
@@ -73,13 +75,19 @@ function playTurn(option){
     $message.text(player.taunt(enemy));
   }
   // will add a few second animation (maybe target flashes red)
-  gameEnd(enemy.hp);
-  $message.text(enemy.enemyAI(player));
+
+  setTimeout(function(){
+    gameEnd(enemy.hp);
+    $message.text(enemy.enemyAI(player));
+  }, 3000);
 
   // will add a few second animation
-  gameEnd(player.hp);
+  setTimeout(function(){
+    gameEnd(player.hp);
+    $message.addClass("hidden");
+    $optionMenu.removeClass("hidden");
+  }, 6000);
 
-  $optionMenu.removeClass("hidden");
 }
 
 // enemy name/type is generated every time

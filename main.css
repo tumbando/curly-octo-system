@@ -6,9 +6,13 @@ body {
   height: 550px;
   position: relative;
   background: gray;
+<<<<<<< HEAD
   background-size: 100%;
   margin: 0 auto;
   display: block; }
+=======
+  margin: 0 auto; }
+>>>>>>> 934373faa7e4922ea39f6e67f92a0293f0760e1b
 
 .hidden {
   display: none; }

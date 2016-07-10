@@ -20,88 +20,77 @@ var $message = $(".option-list p");
 var $options = $(".option");
 
 $(document).ready(function(evt){
-<<<<<<< HEAD
-  $('#field').on('click', function(){
+  $('#waterfall').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting1').removeClass('hidden');
-    battleground = 'images/field.gif';
+    battleground = 'images/waterfall.gif';
+
+    $('.settingMenu img').slideUp(0);
+    $('#setting1').slideDown();
   });
   $('#castle').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting2').removeClass('hidden');
     battleground = 'images/castle.gif';
+
+    $('.settingMenu img').slideUp(0);
+    $('#setting2').slideDown();
   });
   $('#volcano').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting3').removeClass('hidden');
     battleground = 'images/volcano.gif';
+
+    $('.settingMenu img').slideUp(0);
+    $('#setting3').slideDown();
   });
   $('#wizard').on('click', function(){
     $('.charMenu img').addClass('hidden');
     $('#char1').removeClass('hidden');
     characterClassSelect = 'wizard';
+
+    $('.charMenu img').slideUp(0);
+    $('#char1').slideDown();
   });
   $('#knight').on('click', function(){
     $('.charMenu img').addClass('hidden');
     $('#char2').removeClass('hidden');
     characterClassSelect = 'knight';
+
+    $('.charMenu img').slideUp(0);
+    $('#char2').slideDown();
   });
   $('#ranger').on('click', function(){
     $('.charMenu img').addClass('hidden');
     $('#char3').removeClass('hidden');
     characterClassSelect = 'ranger';
+
+    $('.charMenu img').slideUp(0);
+    $('#char3').slideDown();
   });
   $('#troll').on('click', function(){
     $('.oppMenu img').addClass('hidden');
     $('#opp1').removeClass('hidden');
     enemyType = 'troll';
+
+    $('.oppMenu img').slideUp(0);
+    $('#opp1').slideDown();
   });
   $('#dragon').on('click', function(){
     $('.oppMenu img').addClass('hidden');
     $('#opp2').removeClass('hidden');
     enemyType = 'dragon';
+
+    $('.oppMenu img').slideUp(0);
+    $('#opp2').slideDown();
   });
   $('#unicorn').on('click', function(){
     $('.oppMenu img').addClass('hidden');
     $('#opp3').removeClass('hidden');
     enemyType = 'unicorn';
-=======
-  $('#wizard').on('click', function(){
-    $('.charMenu img').slideUp();
-    $('#char1').slideDown();
-  });
-  $('#knight').on('click', function(){
-    $('.charMenu img').slideUp();
-    $('#char2').slideDown();
-  });
-  $('#ranger').on('click', function(){
-    $('.charMenu img').slideUp();
-    $('#char3').slideDown('hidden');
-  });
-  $('#waterfall').on('click', function(){
-    $('.settingMenu img').slideUp();
-    $('#setting1').slideDown();
-  });
-  $('#castle').on('click', function(){
-    $('.settingMenu img').slideUp();
-    $('#setting2').slideDown();
-  });
-  $('#volcano').on('click', function(){
-    $('.settingMenu img').slideUp();
-    $('#setting3').slideDown();
-  });
-  $('#troll').on('click', function(){
-    $('.oppMenu img').slideUp();
-    $('#opp1').slideDown();
-  });
-  $('#dragon').on('click', function(){
-    $('.oppMenu img').slideUp();
-    $('#opp2').slideDown();
-  });
-  $('#unicorn').on('click', function(){
-    $('.oppMenu img').slideUp();
+
+    $('.oppMenu img').slideUp(0);
     $('#opp3').slideDown();
->>>>>>> 934373faa7e4922ea39f6e67f92a0293f0760e1b
   });
 });
 

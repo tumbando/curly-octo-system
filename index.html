@@ -7,25 +7,49 @@
   </head>
   <body>
     <header>
-      Battle Royale 20xx
+      BATTLE ROYALE 20XX
     </header>
-    <form class="userName" action="index.html" method="post">
-    <input type="text" name="name" value="">
-    <ul>
-      <button type="radio" name="button"></button><li>Wizard</li>
-      <button type="radio" name="button"></button><li>Knight</li>
-      <button type="radio" name="button"></button><li>Ranger</li>
-    </ul>
-      <button type="submit" name="button">Submit</button>
+    <section class="home-page hidden">
+      <form class="userName" action="index.html" method="post">
+      <input type="text" name="name" value="">
+      <ul>
+        <button type="radio" name="button"></button><li>Wizard</li>
+        <button type="radio" name="button"></button><li>Knight</li>
+        <button type="radio" name="button"></button><li>Ranger</li>
+      </ul>
+        <button type="submit" name="button">Submit</button>
+      </form>
+    </section>
+
+    <section class="battle-page">
+      <img class="playerSprite"/>
+      <img class="enemySprite"/>
+      <div class="commands">
+        <div class="option-list">
+          <ul> <!--add "hidden" class to this when showing damage/miss/etc -->
+            <li class="option selected">Attack</li>
+            <li class="option">Spell</li>
+            <li class="option">Taunt</li>
+          </ul>
+          <p class="hidden">player attacked enemy for X damage</p>
+        </div>
+        <div class="stats playerStat">
+          <p>player</p>
+          <div class="healthBar">
+          </div>
+        </div>
+        <div class="stats enemyStat">
+          <p>enemy</p>
+          <div class="healthBar">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="result-page hidden">
+    </section>
 
 
-    </form>
-
-
-
-
-
-    <script src="app.js" type="text/javascript">
-    </script>
+    <script src="http://code.jquery.com/jquery-2.0.0.min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
   </body>
 </html>

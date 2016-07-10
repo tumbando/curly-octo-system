@@ -6,8 +6,15 @@ var tauntList = ['You will never defeat me, ','I will destroy you, ','You are to
 // Collect this variable below:
 // var player = new Character (username, characterType);
 
+// DOM elements
+$playerSprite = $(".playerSprite");
+$enemySprite = $(".enemySprite");
+
 // enemy name/type is generated every time
-var enemy = new Character (enemyNameGenerator(), enemyTypeGenerator());
+var enemy = new Character (enemyNameGenerator(), enemyTypeGenerator(), $enemySprite);
+
+// for testing
+var player = new Character ("Test Name", "wizard", $playerSprite);
 
 function enemyNameGenerator () {
     var randInt = Math.floor(Math.random()*10);
@@ -19,7 +26,7 @@ function enemyTypeGenerator () {
     else if (randInt<=7){return 'dragon';}
     else if (randInt>=8){return 'unicorn';}
 }
-function Character (name, characterType) {
+function Character (name, characterType, spriteElement) {
 
     this.username = name + ' the ' + characterType;
     this.characterType = characterType;
@@ -31,6 +38,7 @@ function Character (name, characterType) {
       this.armor = 0;
       this.critChance = 0;
       this.evasion = 40;
+      this.sprite = "images/wizard.gif";
     } else if (this.characterType === 'knight') {
       this.atkPwr = 70;
       this.magicPwr = 2;
@@ -38,6 +46,7 @@ function Character (name, characterType) {
       this.armor = 40;
       this.critChance = 5;
       this.evasion = 10;
+      this.sprite = "images/knight.gif";
     }
     else if (this.characterType === 'ranger') {
       this.atkPwr = 50;
@@ -46,6 +55,7 @@ function Character (name, characterType) {
       this.armor = 20;
       this.critChance = 10;
       this.evasion = 20;
+      this.sprite = "images/archer.gif";
     }
     else if (this.characterType === 'troll') {
       this.atkPwr = 70;
@@ -54,6 +64,7 @@ function Character (name, characterType) {
       this.armor = 0;
       this.critChance = 5;
       this.evasion = 0;
+      this.sprite = "images/troll.png";
     }
     else if (this.characterType === 'dragon') {
       this.atkPwr = 50;
@@ -62,6 +73,7 @@ function Character (name, characterType) {
       this.armor = 40;
       this.critChance = 5;
       this.evasion = 0;
+      this.sprite = "images/dragon.gif";
     }
     else if (this.characterType === 'unicorn') {
       this.atkPwr = 0;
@@ -70,7 +82,9 @@ function Character (name, characterType) {
       this.armor = 0;
       this.critChance = 0;
       this.evasion = 50;
+      this.sprite = "images/unicorn.gif";
     }
+    spriteElement.attr("src", this.sprite);
 }
 //This function will have to do more, change the screen or something like that.
 function gameEnd (currentHp) {

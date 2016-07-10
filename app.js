@@ -8,18 +8,14 @@ var enemyNameList = ['Zorlon','Glabalko','Schmirzz','Krul\'Nogath','Big-Ugly','R
 var tauntList = ['You will never defeat me, ','I will destroy you, ','You are too weak, ','You smell like a giant rat, ','Everything you have ever known will be crushed!','I could kill you with one hand tied behind my back!','Is that all you\'ve got?','Ha ha ha ha ha ha ha!','Your face looks like a grease fire!','I haven\'t even broken a sweat yet!'];
 
 // DOM elements
-
 var $startButton = $('.startgame');
-
 var $optionMenu = $(".option-list ul");
 var $playerSprite = $(".playerSprite");
 var $playerNameTag = $(".playerStat p");
 var $playerHealth = $(".playerStat .healthBar .health");
-
 var $enemySprite = $(".enemySprite");
 var $enemyNameTag = $(".enemyStat p");
 var $enemyHealth = $(".enemyStat .healthBar .health");
-
 var $message = $(".option-list p");
 var $options = $(".option");
 
@@ -27,17 +23,17 @@ $(document).ready(function(evt){
   $('#field').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting1').removeClass('hidden');
-    battleground = 'field';
+    battleground = 'images/field.gif';
   });
   $('#castle').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting2').removeClass('hidden');
-    battleground = 'castle';
+    battleground = 'images/castle.gif';
   });
   $('#volcano').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting3').removeClass('hidden');
-    battleground = 'volcano';
+    battleground = 'images/volcano.gif';
   });
   $('#wizard').on('click', function(){
     $('.charMenu img').addClass('hidden');
@@ -79,6 +75,7 @@ $startButton.click(function(){
     var playerTemp = new Character (tempName, characterClassSelect, $playerSprite, $playerNameTag, $playerHealth);
     enemy = enemyTemp;
     player = playerTemp;
+    $('.battle-page').css("background-image", 'url("' + battleground + '")');
 });
 
 // listener for attack/spell/taunt
@@ -105,26 +102,15 @@ function playTurn(option){
   $optionMenu.removeClass("hidden");
 }
 
-// enemy name/type is generated every time
-
-// for testing
-
 function enemyNameGenerator () {
     var randInt = Math.floor(Math.random()*10);
     return enemyNameList[randInt];
-}
-function enemyTypeGenerator () {
-    var randInt = Math.floor(Math.random()*10);
-    if (randInt <=4){return 'troll';}
-    else if (randInt<=7){return 'dragon';}
-    else if (randInt>=8){return 'unicorn';}
 }
 function Character (name, characterType, spriteElement, nameTag, healthBar) {
 
     this.username = name + ' the ' + characterType;
     this.characterType = characterType;
-    // this.build = function () {
-      if (this.characterType === 'wizard') {
+    if (this.characterType === 'wizard') {
         this.atkPwr = 10;
         this.magicPwr = 12;
         this.maxHP = 500;
@@ -133,7 +119,7 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
         this.critChance = 0;
         this.evasion = 40;
         this.sprite = "images/wizard.gif";
-      } else if (this.characterType === 'knight') {
+    } else if (this.characterType === 'knight') {
         this.atkPwr = 70;
         this.magicPwr = 2;
         this.maxHP = 700;
@@ -142,8 +128,7 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
         this.critChance = 5;
         this.evasion = 10;
         this.sprite = "images/knight.gif";
-      }
-      else if (this.characterType === 'ranger') {
+    } else if (this.characterType === 'ranger') {
         this.atkPwr = 50;
         this.magicPwr = 6;
         this.maxHP = 600;
@@ -152,8 +137,7 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
         this.critChance = 10;
         this.evasion = 20;
         this.sprite = "images/archer.gif";
-      }
-      else if (this.characterType === 'troll') {
+    } else if (this.characterType === 'troll') {
         this.atkPwr = 70;
         this.magicPwr = 1;
         this.maxHP = 1500;
@@ -162,8 +146,7 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
         this.critChance = 5;
         this.evasion = 0;
         this.sprite = "images/troll.png";
-      }
-      else if (this.characterType === 'dragon') {
+      } else if (this.characterType === 'dragon') {
         this.atkPwr = 50;
         this.magicPwr = 8;
         this.maxHP = 1000;
@@ -172,8 +155,7 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
         this.critChance = 5;
         this.evasion = 0;
         this.sprite = "images/dragon.gif";
-      }
-      else if (this.characterType === 'unicorn') {
+      } else if (this.characterType === 'unicorn') {
         this.atkPwr = 0;
         this.magicPwr = 24;
         this.maxHP = 800;
@@ -183,7 +165,6 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
         this.evasion = 50;
         this.sprite = "images/unicorn.gif";
       }
-    // };
 
     this.spriteElement = spriteElement;
     this.spriteElement.attr("src", this.sprite);
@@ -235,7 +216,6 @@ Character.prototype.spell = function (target) {
           return (this.username + ' cast a spell for ' + damage + ' damage!');
     }
 };
-//This function calls upon the variable defined up top with a lot of taunt phrases. Some of them use the target name. Feel free to change these if you want!
 Character.prototype.taunt = function (target) {
     var randInt = Math.floor(Math.random()*10);
     if (randInt <= 3) {
@@ -272,33 +252,3 @@ Character.prototype.enemyAI = function() {
       }
     }
 };
-
-// SEE BELOW: These are the event listeners I used to test, added in 3 dummy buttons for 3 different actions - attack, spell and taunt.
-// See the console.log commands to check out the string texts the functions return - I think it's also a good idea to keep track of hp, whether that's going to be with the health bar or simply informing the user.
-// var atk = document.getElementById('#atk');
-// var mag = document.getElementById('#mag');
-// var tnt = document.getElementById('#tnt');
-// atk.addEventListener('click',function(){
-//   console.log(player.attack(enemy));
-//   console.log(enemy.username + ' has ' + enemy.hp + ' left!');
-//   gameEnd(enemy.hp);
-//   console.log(enemy.enemyAI(player));
-//   console.log(player.username + ' has ' + player.hp + ' left!');
-//   gameEnd(player.hp);
-// });
-// mag.addEventListener('click',function(){
-//   console.log(player.spell(enemy));
-//   console.log(enemy.username + ' has ' + enemy.hp + ' left!');
-//   gameEnd(enemy.hp);
-//   console.log(enemy.enemyAI(player));
-//   console.log(player.username + ' has ' + player.hp + ' left!');
-//   gameEnd(player.hp);
-// });
-// tnt.addEventListener('click',function(){
-//   console.log(player.taunt(enemy));
-//   console.log(enemy.username + ' has ' + enemy.hp + ' left!');
-//   gameEnd(enemy.hp);
-//   console.log(enemy.enemyAI(player));
-//   console.log(player.username + ' has ' + player.hp + ' left!');
-//   gameEnd(player.hp);
-// });

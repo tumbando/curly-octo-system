@@ -8,6 +8,10 @@ body {
   height: 550px;
   position: relative;
   background: gray;
+  background-size: 100%;
+
+  margin: 0 auto;
+  display: block;
 }
 .hidden {
   display: none;
@@ -84,7 +88,7 @@ body {
     line-height: 150%;
   }
 }
-=======
+// =======
 header {
     text-align: center;
     font-family: Impact;
@@ -208,4 +212,4 @@ p {
 // li p {
 //   display: inline-block;
 // }
->>>>>>> e041cc288f1bbc56b4b914f5af72314e4c18a599
+// >>>>>>> e041cc288f1bbc56b4b914f5af72314e4c18a599

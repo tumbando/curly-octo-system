@@ -20,7 +20,7 @@ var $message = $(".option-list p");
 var $options = $(".option");
 
 $(document).ready(function(evt){
-<<<<<<< HEAD
+// <<<<<<< HEAD
   $('#field').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting1').removeClass('hidden');
@@ -65,7 +65,8 @@ $(document).ready(function(evt){
     $('.oppMenu img').addClass('hidden');
     $('#opp3').removeClass('hidden');
     enemyType = 'unicorn';
-=======
+  });
+// =======
   $('#wizard').on('click', function(){
     $('.charMenu img').slideUp();
     $('#char1').slideDown();
@@ -101,7 +102,7 @@ $(document).ready(function(evt){
   $('#unicorn').on('click', function(){
     $('.oppMenu img').slideUp();
     $('#opp3').slideDown();
->>>>>>> 934373faa7e4922ea39f6e67f92a0293f0760e1b
+// >>>>>>> 934373faa7e4922ea39f6e67f92a0293f0760e1b
   });
 });
 

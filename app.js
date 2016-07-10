@@ -1,62 +1,85 @@
+var characterClassSelect = '';
+var characterName = '';
+var battleground = '';
+var enemyType = '';
+var player = {};
+var enemy = {};
+var enemyNameList = ['Zorlon','Glabalko','Schmirzz','Krul\'Nogath','Big-Ugly','Rogmler','Aarthunorax','Vin-Petryl','Clagarathon','Xanthorq'];
+var tauntList = ['You will never defeat me, ','I will destroy you, ','You are too weak, ','You smell like a giant rat, ','Everything you have ever known will be crushed!','I could kill you with one hand tied behind my back!','Is that all you\'ve got?','Ha ha ha ha ha ha ha!','Your face looks like a grease fire!','I haven\'t even broken a sweat yet!'];
+
+// DOM elements
+
+var $startButton = $('.startgame');
+
+var $optionMenu = $(".option-list ul");
+var $playerSprite = $(".playerSprite");
+var $playerNameTag = $(".playerStat p");
+var $playerHealth = $(".playerStat .healthBar .health");
+
+var $enemySprite = $(".enemySprite");
+var $enemyNameTag = $(".enemyStat p");
+var $enemyHealth = $(".enemyStat .healthBar .health");
+
+var $message = $(".option-list p");
+var $options = $(".option");
+
 $(document).ready(function(evt){
   $('#field').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting1').removeClass('hidden');
+    battleground = 'field';
   });
   $('#castle').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting2').removeClass('hidden');
+    battleground = 'castle';
   });
   $('#volcano').on('click', function(){
     $('.settingMenu img').addClass('hidden');
     $('#setting3').removeClass('hidden');
+    battleground = 'volcano';
   });
   $('#wizard').on('click', function(){
     $('.charMenu img').addClass('hidden');
     $('#char1').removeClass('hidden');
+    characterClassSelect = 'wizard';
   });
   $('#knight').on('click', function(){
     $('.charMenu img').addClass('hidden');
     $('#char2').removeClass('hidden');
+    characterClassSelect = 'knight';
   });
   $('#ranger').on('click', function(){
     $('.charMenu img').addClass('hidden');
     $('#char3').removeClass('hidden');
+    characterClassSelect = 'ranger';
   });
   $('#troll').on('click', function(){
     $('.oppMenu img').addClass('hidden');
     $('#opp1').removeClass('hidden');
+    enemyType = 'troll';
   });
   $('#dragon').on('click', function(){
     $('.oppMenu img').addClass('hidden');
     $('#opp2').removeClass('hidden');
+    enemyType = 'dragon';
   });
   $('#unicorn').on('click', function(){
     $('.oppMenu img').addClass('hidden');
     $('#opp3').removeClass('hidden');
+    enemyType = 'unicorn';
   });
-  });
+});
 
-//GAME LOGIC STUFF:
-//NEED: Add input functions that will gather arguments to build var player (username, characterType)
-//NEED: Add click event handlers that call functions, see below for details
-var enemyNameList = ['Zorlon','Glabalko','Schmirzz','Krul\'Nogath','Big-Ugly','Rogmler','Aarthunorax','Vin-Petryl','Clagarathon','Xanthorq'];
-var tauntList = ['You will never defeat me, ','I will destroy you, ','You are too weak, ','You smell like a giant rat, ','Everything you have ever known will be crushed!','I could kill you with one hand tied behind my back!','Is that all you\'ve got?','Ha ha ha ha ha ha ha!','Your face looks like a grease fire!','I haven\'t even broken a sweat yet!'];
-// Collect this variable below:
-// var player = new Character (username, characterType);
-
-// DOM elements
-$optionMenu = $(".option-list ul");
-$playerSprite = $(".playerSprite");
-$playerNameTag = $(".playerStat p");
-$playerHealth = $(".playerStat .healthBar .health");
-
-$enemySprite = $(".enemySprite");
-$enemyNameTag = $(".enemyStat p");
-$enemyHealth = $(".enemyStat .healthBar .health");
-
-$message = $(".option-list p");
-$options = $(".option");
+$startButton.click(function(){
+    $('.introScreen').addClass('hidden');
+    $('.battle-page').removeClass('hidden');
+    var tempName = String($('#enterName')[0].value);
+    var enemyTemp = new Character (enemyNameGenerator(), enemyType, $enemySprite, $enemyNameTag, $enemyHealth);
+    var playerTemp = new Character (tempName, characterClassSelect, $playerSprite, $playerNameTag, $playerHealth);
+    enemy = enemyTemp;
+    player = playerTemp;
+});
 
 // listener for attack/spell/taunt
 $options.on("click", function(evt){
@@ -83,10 +106,8 @@ function playTurn(option){
 }
 
 // enemy name/type is generated every time
-var enemy = new Character (enemyNameGenerator(), enemyTypeGenerator(), $enemySprite, $enemyNameTag, $enemyHealth);
 
 // for testing
-var player = new Character ("Test Name", "knight", $playerSprite, $playerNameTag, $playerHealth);
 
 function enemyNameGenerator () {
     var randInt = Math.floor(Math.random()*10);
@@ -102,66 +123,68 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
 
     this.username = name + ' the ' + characterType;
     this.characterType = characterType;
+    // this.build = function () {
+      if (this.characterType === 'wizard') {
+        this.atkPwr = 10;
+        this.magicPwr = 12;
+        this.maxHP = 500;
+        this.hp = 500;
+        this.armor = 0;
+        this.critChance = 0;
+        this.evasion = 40;
+        this.sprite = "images/wizard.gif";
+      } else if (this.characterType === 'knight') {
+        this.atkPwr = 70;
+        this.magicPwr = 2;
+        this.maxHP = 700;
+        this.hp = 700;
+        this.armor = 40;
+        this.critChance = 5;
+        this.evasion = 10;
+        this.sprite = "images/knight.gif";
+      }
+      else if (this.characterType === 'ranger') {
+        this.atkPwr = 50;
+        this.magicPwr = 6;
+        this.maxHP = 600;
+        this.hp = 600;
+        this.armor = 20;
+        this.critChance = 10;
+        this.evasion = 20;
+        this.sprite = "images/archer.gif";
+      }
+      else if (this.characterType === 'troll') {
+        this.atkPwr = 70;
+        this.magicPwr = 1;
+        this.maxHP = 1500;
+        this.hp = 1500;
+        this.armor = 0;
+        this.critChance = 5;
+        this.evasion = 0;
+        this.sprite = "images/troll.png";
+      }
+      else if (this.characterType === 'dragon') {
+        this.atkPwr = 50;
+        this.magicPwr = 8;
+        this.maxHP = 1000;
+        this.hp = 1000;
+        this.armor = 40;
+        this.critChance = 5;
+        this.evasion = 0;
+        this.sprite = "images/dragon.gif";
+      }
+      else if (this.characterType === 'unicorn') {
+        this.atkPwr = 0;
+        this.magicPwr = 24;
+        this.maxHP = 800;
+        this.hp = 800;
+        this.armor = 0;
+        this.critChance = 0;
+        this.evasion = 50;
+        this.sprite = "images/unicorn.gif";
+      }
+    // };
 
-    if (this.characterType === 'wizard') {
-      this.atkPwr = 10;
-      this.magicPwr = 12;
-      this.maxHP = 500;
-      this.hp = 500;
-      this.armor = 0;
-      this.critChance = 0;
-      this.evasion = 40;
-      this.sprite = "images/wizard.gif";
-    } else if (this.characterType === 'knight') {
-      this.atkPwr = 70;
-      this.magicPwr = 2;
-      this.maxHP = 700;
-      this.hp = 700;
-      this.armor = 40;
-      this.critChance = 5;
-      this.evasion = 10;
-      this.sprite = "images/knight.gif";
-    }
-    else if (this.characterType === 'ranger') {
-      this.atkPwr = 50;
-      this.magicPwr = 6;
-      this.maxHP = 600;
-      this.hp = 600;
-      this.armor = 20;
-      this.critChance = 10;
-      this.evasion = 20;
-      this.sprite = "images/archer.gif";
-    }
-    else if (this.characterType === 'troll') {
-      this.atkPwr = 70;
-      this.magicPwr = 1;
-      this.maxHP = 1500;
-      this.hp = 1500;
-      this.armor = 0;
-      this.critChance = 5;
-      this.evasion = 0;
-      this.sprite = "images/troll.png";
-    }
-    else if (this.characterType === 'dragon') {
-      this.atkPwr = 50;
-      this.magicPwr = 8;
-      this.maxHP = 1000;
-      this.hp = 1000;
-      this.armor = 40;
-      this.critChance = 5;
-      this.evasion = 0;
-      this.sprite = "images/dragon.gif";
-    }
-    else if (this.characterType === 'unicorn') {
-      this.atkPwr = 0;
-      this.magicPwr = 24;
-      this.maxHP = 800;
-      this.hp = 800;
-      this.armor = 0;
-      this.critChance = 0;
-      this.evasion = 50;
-      this.sprite = "images/unicorn.gif";
-    }
     this.spriteElement = spriteElement;
     this.spriteElement.attr("src", this.sprite);
     this.nameTag = nameTag;

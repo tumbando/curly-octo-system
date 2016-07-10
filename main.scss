@@ -8,7 +8,10 @@ body {
   height: 550px;
   position: relative;
   background: gray;
+  background-size: 100%;
+
   margin: 0 auto;
+  display: block;
 }
 .hidden {
   display: none;

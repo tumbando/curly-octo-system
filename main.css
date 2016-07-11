@@ -231,15 +231,15 @@ li p {
   0% {
     padding-right: 0px; }
   20% {
-    padding-right: 5px; }
+    padding-right: 10px; }
   40% {
-    padding-right: 13px; }
+    padding-right: 26px; }
   50% {
-    padding-right: 30px; }
+    padding-right: 60px; }
   60% {
-    padding-right: 13px; }
+    padding-right: 26px; }
   80% {
-    padding-right: 5px; }
+    padding-right: 10px; }
   100% {
     padding-right: 0px; } }
 @-webkit-keyframes flicker {

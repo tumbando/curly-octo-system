@@ -92,6 +92,10 @@ $(document).ready(function(evt){
     $('.oppMenu img').slideUp(0);
     $('#opp3').slideDown();
   });
+  $('.results button').on("click", function(){
+    $(".result-page").addClass("hidden");
+    $(".introScreen").removeClass("hidden");
+  });
 });
 
 $startButton.click(function(){
@@ -211,10 +215,12 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
 //This function will have to do more, change the screen or something like that.
 function gameEnd (currentHp) {
     if (currentHp <= 0) {
+      $(".battle-page").addClass("hidden");
+      $(".result-page").removeClass("hidden");
       if (player.hp >= enemy.hp) {
-        console.log('You Win!');
+        $(".results h1").text("You Win!");
       } else {
-        console.log('You Died!');
+        $(".results h1").text("You Lose!");
       }
     }
 }

@@ -2,22 +2,24 @@
 
 body {
   margin: 0;
+  background-image: url("http://xdesktopwallpapers.com/wp-content/uploads/2011/10/Immortals-Battleground-View.jpg");
+  object-fit: cover;
 }
 .battle-page {
   width: 1000px;
   height: 550px;
   position: relative;
-<<<<<<< HEAD
+
   background: url("images/castle.gif");
   background-size: 1000px 400px;
   margin: 0 auto;
   border: 5px solid black;
-=======
+
   background: gray;
   background-size: 100%;
   margin: 0 auto;
   display: block;
->>>>>>> 832c48079aebfb621b698785d01a933bbfaf26c3
+
 }
 
 .hidden {
@@ -82,6 +84,10 @@ body {
 .option {
   font-size: 35px;
   border: 2px solid transparent;
+  height: 40px;
+  width: 400px;
+  text-align: left;
+  padding-left: 15px;
   &:hover {
     border: 2px solid white;
   }
@@ -113,10 +119,7 @@ header {
     color: red;
     font-size: 5rem;
 }
-body {
-    background-image: url("http://xdesktopwallpapers.com/wp-content/uploads/2011/10/Immortals-Battleground-View.jpg");
-    object-fit: cover;
-}
+
 #enterName {
     background: black;
     width: 23rem;
@@ -131,7 +134,7 @@ body {
     text-align: center;
 }
 form input {
-    // display: inline-block;
+    display: inline-block;
     width: 1rem;
     height: 1rem;
 }
@@ -169,8 +172,8 @@ form input {
   display:inline;
 }
 .charMenu p {
-  // width:20rem;
-  // margin:0;
+  width:20rem;
+  margin:0;
 }
 
 .settingMenu img {
@@ -220,12 +223,12 @@ p {
   color:aqua;
 }
 
-// ul li {
-//   list-style-type: none;
-//   text-align: center;
-//   width:1rem;
-//   height: 1rem;
-// }
-// li p {
-//   display: inline-block;
-// }
+ul li {
+  list-style-type: none;
+  text-align: center;
+  width:1rem;
+  height: 1rem;
+}
+li p {
+  display: inline-block;
+}

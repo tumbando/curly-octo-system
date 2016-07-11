@@ -7,7 +7,7 @@ var enemy = {};
 var enemyNameList = ['Zorlon','Glabalko','Schmirzz','Krul\'Nogath','Big-Ugly','Rogmler','Aarthunorax','Vin-Petryl','Clagarathon','Xanthorq'];
 var tauntList = ['You will never defeat me, ','I will destroy you, ','You are too weak, ','You smell like a giant rat, ','Everything you have ever known will be crushed!','I could kill you with one hand tied behind my back!','Is that all you\'ve got?','Ha ha ha ha ha ha ha!','Your face looks like a grease fire!','I haven\'t even broken a sweat yet!'];
 
-// DOM elements
+// DOM elements/sound effects
 var $startButton = $('.startgame');
 var $optionMenu = $(".option-list ul");
 var $playerSprite = $(".playerSprite");
@@ -18,6 +18,9 @@ var $enemyNameTag = $(".enemyStat p");
 var $enemyHealth = $(".enemyStat .healthBar .health");
 var $message = $(".option-list p");
 var $options = $(".option");
+var hitSound = new Audio("images/hit.wav");
+var attackSound = new Audio("images/attack.wav");
+var spellSound = new Audio("images/spell.wav");
 
 $(document).ready(function(evt){
   $('#waterfall').on('click', function(){
@@ -248,6 +251,7 @@ function enemyAttackAnimation(element){
 
 function flicker(element){
   if (element.style.webkitAnimationName !== "flicker"){
+    hitSound.play(); // happens every time a character is hit
     element.style.webkitAnimationName = "flicker";
     element.style.webkitAnimationDuration = "0.5s";
     setTimeout(function() {
@@ -260,6 +264,7 @@ Character.prototype.attack = function (target) {
   var miss = Math.ceil(Math.random()*100);
   var crit = Math.ceil(Math.random()*100);
   var damage = 0;
+  attackSound.play();
   if (miss <= target.evasion) {
       damage = 0;
       return (this.username + ' missed!');
@@ -281,6 +286,7 @@ Character.prototype.attack = function (target) {
 Character.prototype.spell = function (target) {
     var damage = 0;
     var miss = Math.ceil(Math.random()*100);
+    spellSound.play();
     if (miss <= target.evasion) {
         damage = 0;
         return (this.username + ' missed!');

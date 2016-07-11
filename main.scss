@@ -109,6 +109,11 @@ body {
   button {
     margin: 10px;
   }
+  h1 {
+    font-size: 70px;
+    margin-top: 0px;
+    padding-top: 50px;
+  }
 }
 
 header {
@@ -230,3 +235,81 @@ ul li {
 li p {
   display: inline-block;
 }
+
+
+// animation keyframes
+@-webkit-keyframes playerAttack {
+  0% {
+    padding-left: 0px;
+  }
+  20% {
+    padding-left: 5px;
+  }
+  40% {
+    padding-left: 13px;
+  }
+  50% {
+    padding-left: 30px;
+  }
+  60% {
+    padding-left: 13px;
+  }
+  80% {
+    padding-left: 5px;
+  }
+  100% {
+    padding-left: 0px;
+  }
+}
+
+@-webkit-keyframes enemyAttack {
+  0% {
+    padding-right: 0px;
+  }
+  20% {
+    padding-right: 5px;
+  }
+  40% {
+    padding-right: 13px;
+  }
+  50% {
+    padding-right: 30px;
+  }
+  60% {
+    padding-right: 13px;
+  }
+  80% {
+    padding-right: 5px;
+  }
+  100% {
+    padding-right: 0px;
+  }
+}
+
+@-webkit-keyframes flicker {
+  0% {
+    opacity: 1
+  }
+  25% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+//

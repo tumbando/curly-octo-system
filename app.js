@@ -1,7 +1,6 @@
-var characterClassSelect = '';
-var characterName = '';
-var battleground = '';
-var enemyType = '';
+var characterClassSelect = 'knight';
+var battleground = 'images/castle.gif';
+var enemyType = 'dragon';
 var player = {};
 var enemy = {};
 var enemyNameList = ['Zorlon','Glabalko','Schmirzz','Krul\'Nogath','Big-Ugly','Rogmler','Aarthunorax','Vin-Petryl','Clagarathon','Xanthorq'];
@@ -101,7 +100,7 @@ $(document).ready(function(evt){
 $startButton.click(function(){
     $('.introScreen').addClass('hidden');
     $('.battle-page').removeClass('hidden');
-    var tempName = String($('#enterName')[0].value);
+    var tempName = String($('#enterName')[0].value) || 'Everyman';
     var enemyTemp = new Character (enemyNameGenerator(), enemyType, $enemySprite, $enemyNameTag, $enemyHealth);
     var playerTemp = new Character (tempName, characterClassSelect, $playerSprite, $playerNameTag, $playerHealth);
     enemy = enemyTemp;
@@ -214,7 +213,6 @@ function Character (name, characterType, spriteElement, nameTag, healthBar) {
     this.healthBar = healthBar;
     this.healthBar.css("width", Math.ceil(this.hp / this.maxHP * 200));
 }
-//This function will have to do more, change the screen or something like that.
 function gameEnd (currentHp) {
     if (currentHp <= 0) {
       $(".battle-page").addClass("hidden");

@@ -75,7 +75,8 @@ body {
   height: 40px;
   width: 400px;
   text-align: left;
-  padding-left: 15px; }
+  padding-left: 15px;
+  cursor: pointer; }
   .option:hover {
     border: 2px solid white; }
 

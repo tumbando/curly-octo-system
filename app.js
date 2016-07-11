@@ -119,8 +119,10 @@ function playTurn(option){
   $optionMenu.addClass("hidden");
   $message.removeClass("hidden");
   if (option.textContent === "Attack"){
+    playerAttackAnimation(player.spriteElement[0]);
     $message.text(player.attack(enemy));
   } else if (option.textContent === "Spell") {
+    playerAttackAnimation(player.spriteElement[0]);
     $message.text(player.spell(enemy));
   } else {
     $message.text(player.taunt(enemy));
@@ -224,6 +226,36 @@ function gameEnd (currentHp) {
       }
     }
 }
+function playerAttackAnimation(element){
+  if (element.style.webkitAnimationName !== "playerAttack"){
+    element.style.webkitAnimationName = "playerAttack";
+    element.style.webkitAnimationDuration = "0.2s";
+    setTimeout(function() {
+      element.style.webkitAnimationName = "";
+    }, 200);
+  }
+}
+
+function enemyAttackAnimation(element){
+  if (element.style.webkitAnimationName !== "enemyAttack"){
+    element.style.webkitAnimationName = "enemyAttack";
+    element.style.webkitAnimationDuration = "0.2s";
+    setTimeout(function() {
+      element.style.webkitAnimationName = "";
+    }, 200);
+  }
+}
+
+function flicker(element){
+  if (element.style.webkitAnimationName !== "flicker"){
+    element.style.webkitAnimationName = "flicker";
+    element.style.webkitAnimationDuration = "0.5s";
+    setTimeout(function() {
+      element.style.webkitAnimationName = "";
+    }, 500);
+  }
+}
+
 Character.prototype.attack = function (target) {
   var miss = Math.ceil(Math.random()*100);
   var crit = Math.ceil(Math.random()*100);
@@ -235,12 +267,14 @@ Character.prototype.attack = function (target) {
       damage = (this.atkPwr*3 + 50 - target.armor);
       target.hp -= damage;
       target.healthBar.css("width", Math.ceil(target.hp / target.maxHP * 200));
+      flicker(target.spriteElement[0]);
       return (this.username + ' struck a critical hit for ' + damage + ' damage!');
   } else {
       damage = (this.atkPwr + Math.floor(Math.random()*50)-target.armor);
       if (damage <=0) {damage = 0;}
       target.hp -= damage;
       target.healthBar.css("width", Math.ceil(target.hp / target.maxHP * 200));
+      flicker(target.spriteElement[0]);
       return (this.username + ' attacked for ' + damage + ' damage!');
   }
 };
@@ -254,6 +288,7 @@ Character.prototype.spell = function (target) {
           damage = this.magicPwr * Math.ceil(Math.random()*12);
           target.hp -= damage;
           target.healthBar.css("width", Math.ceil(target.hp / target.maxHP * 200));
+          flicker(target.spriteElement[0]);
           return (this.username + ' cast a spell for ' + damage + ' damage!');
     }
 };
@@ -271,24 +306,30 @@ Character.prototype.enemyAI = function() {
       if (randInt <=2 ) {
         return this.taunt(player);
       } else if (randInt <=8 ){
+        enemyAttackAnimation(this.spriteElement[0]);
         return this.attack(player);
       } else {
+        enemyAttackAnimation(this.spriteElement[0]);
         return this.spell(player);
       }
     } else if (this.characterType === 'dragon') {
       if (randInt <=1 ) {
         return this.taunt(player);
       } else if (randInt <=4 ){
+        enemyAttackAnimation(this.spriteElement[0]);
         return this.attack(player);
       } else {
+        enemyAttackAnimation(this.spriteElement[0]);
         return this.spell(player);
       }
     } else if (this.characterType === 'unicorn') {
       if (randInt <=3 ) {
         return this.taunt(player);
       } else if (randInt <=4 ){
+        enemyAttackAnimation(this.spriteElement[0]);
         return this.attack(player);
       } else {
+        enemyAttackAnimation(this.spriteElement[0]);
         return this.spell(player);
       }
     }
